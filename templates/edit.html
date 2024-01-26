@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>Książka telefoniczna</title>
+  </head>
+  <body>
+    <h1>Edycja kontaktu</h1>
+    <form action="{{url_for('save')}}">
+      <input type="hidden" id="id" name="id" value="{{kontakt[0]}}"/>
+      <input type="text" id="nazwisko" name="nazwisko" value="{{kontakt[2]}}" />
+      <input type="text" id="imie" name="imie" value="{{kontakt[1]}}" />
+      <input type="text" id="numer" name="numer" value="{{kontakt[3]}}"/>
+      <input type="submit" value="Potwierdz" />
+    </form>
+  </body>
+</html>

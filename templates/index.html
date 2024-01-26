@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Książka telefoniczna</title>
+  </head>
+  <body>
+    <h1>Książka telefoniczna</h1>
+    <h2 style="color:crimson">{{komunikat}}</h2>
+    <form action="{{url_for('add')}}">
+      <label for="nazwisko">Nazwisko</label>
+      <input type="text" id="nazwisko" name="nazwisko" />
+      <label for="imie">Imie</label>
+      <input type="text" id="imie" name="imie" />
+      <label for="numer">Numer</label>
+      <input type="text" id="numer" name="numer" />
+      <input type="submit" value="Potwierdz" />
+    </form>
+    <table style="border-style: ridge; border-collapse: collapse">
+      <tr>
+        <th>Nazwisko</th>
+        <th>Imie</th>
+        <th>Numer</th>
+        <th>Usun</th>
+        <th>Edytuj</th>
+      </tr>
+      {%for wpis in lista%}
+      <tr>
+        <td style="border-top-style: ridge">
+          <div
+            style="font-size: large; margin-right: 1.5em; margin-left: 1.5em"
+          >
+            {{wpis[2]}}
+          </div>
+        </td>
+        <td style="border-top-style: ridge">
+          <div
+            style="font-size: large; margin-right: 1.5em; margin-left: 1.5em"
+          >
+            {{wpis[1]}}
+          </div>
+        </td>
+        <td style="border-top-style: ridge">
+          <div
+            style="font-size: large; margin-right: 1.5em; margin-left: 1.5em"
+          >
+            {{wpis[3]}}
+          </div>
+        </td>
+        <td style="border-top-style: ridge">
+          <form action="{{url_for('delete')}}">
+            <input type="hidden" id="id" name="id" value="{{wpis[0]}}" />
+            <input type="submit" value="Usun kontakt" />
+          </form>
+        </td>
+        <td style="border-top-style: ridge">
+          <form action="{{url_for('edit')}}">
+            <input type="hidden" id="id" name="id" value="{{wpis[0]}}" />
+            <input type="submit" value="Edytuj kontakt" />
+          </form>
+        </td>
+      </tr>
+      {%endfor%}
+    </table>
+  </body>
+</html>
