@@ -62,3 +62,7 @@ def save():
     kontakty.commit()
     kontakty.close()
     return index()
+
+@app.route("/sort")
+def sort():
+    return index()
