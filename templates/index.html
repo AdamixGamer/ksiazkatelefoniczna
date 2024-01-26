@@ -21,7 +21,7 @@
     {%if sortby == "nazwisko"%}
     <tr>
       <th>
-        <form action="{{url_for('sort')}}"><input type="hidden" id="nazwisko" name="sortby" value="nazwisko" /><input
+        <form action="{{url_for('sort')}}"><input type="hidden" id="nazwisko" name="sortby" value="nazwisko desc" /><input
           type="submit" value="Nazwisko" /></form>
       </th>
       <th>
@@ -68,7 +68,7 @@
     {% else %}
     <tr>
       <th>
-        <form action="{{url_for('sort')}}"><input type="hidden" id="imie" name="sortby" value="imie" /><input
+        <form action="{{url_for('sort')}}"><input type="hidden" id="imie" name="sortby" value="imie desc" /><input
             type="submit" value="Imie" /></form>
       </th>
       <th>

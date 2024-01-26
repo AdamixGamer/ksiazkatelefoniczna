@@ -12,7 +12,7 @@ kontakty.execute("create table if not exists kontakt (id integer PRIMARY KEY AUT
 #kontakty.commit()
 kontakty.close()
 @app.route("/")
-def index(sortby="", komunikat=""):
+def index(sortby="nazwisko", komunikat=""):
     kontakty = sqlite3.connect("kontakty.db")
     print(f"select * from kontakt order by {sortby}")
     lista = kontakty.execute(f"select * from kontakt order by {sortby}").fetchall()
