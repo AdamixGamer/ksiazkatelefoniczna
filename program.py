@@ -12,11 +12,12 @@ kontakty.execute("create table if not exists kontakt (id integer PRIMARY KEY AUT
 #kontakty.commit()
 kontakty.close()
 @app.route("/")
-def index(komunikat=""):
+def index(sortby="", komunikat=""):
     kontakty = sqlite3.connect("kontakty.db")
-    lista = kontakty.execute("select * from kontakt").fetchall()
+    print(f"select * from kontakt order by {sortby}")
+    lista = kontakty.execute(f"select * from kontakt order by {sortby}").fetchall()
     kontakty.close()
-    return render_template("index.html",lista=lista,komunikat=komunikat)
+    return render_template("index.html",lista=lista,komunikat=komunikat,sortby=sortby)
 
 
 @app.route("/add")
@@ -31,7 +32,7 @@ def add():
         kontakty.close()
         return index()
     else:
-        return index("Niepoprawna wartość")
+        return index("n","Niepoprawna wartość")
 
 
 @app.route("/delete")
@@ -65,4 +66,4 @@ def save():
 
 @app.route("/sort")
 def sort():
-    return index()
+    return index(request.args["sortby"]);
